@@ -6,10 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from "./store/StoreProvider";
 import AppStore from "./store/AppStore";
 
+interface WindowWithPreloadState extends Window {
+    __PRELOADED_STATE__?: AppStore;
+}
+
 const domNode = document.getElementById('root') as HTMLElement;
 const reactNode = (
     <React.StrictMode>
-        <StoreProvider value={new AppStore((window as any).__PRELOADED_STATE__)}>
+        <StoreProvider value={new AppStore((window as WindowWithPreloadState).__PRELOADED_STATE__)}>
             <App />
         </StoreProvider>
     </React.StrictMode>

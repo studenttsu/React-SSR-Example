@@ -17,7 +17,9 @@ function App() {
     <>
       <PageMeta title="My SSR App" description="My SSR App" />
 
-        {data.map(x => x.title)}
+        <div hidden>
+            {data.map(x => x.title)}
+        </div>
 
       <div className="App">
         <header className="App-header">
